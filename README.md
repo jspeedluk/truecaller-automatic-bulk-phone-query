@@ -16,3 +16,8 @@ There are multiple ways. As this tool is using Selenium4, which is latest at thi
 - The find feature supports XPATH. Read the syntax of XPATH online, and then try each of them to see if it is working fie or not. Example XPATH are shown in the code for reference.
 
 If you are interested in making PR to this code, feel free to raise one and message me.
+
+# Requirements
+- pip install webdriver_manager --user
+- pip install bs4
+- pip install selenium
