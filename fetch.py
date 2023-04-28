@@ -13,34 +13,19 @@ password="microsoft account password"
 
 def get_options():
     options = webdriver.ChromeOptions()
-    # options.add_experimental_option('debuggerAddress', 'localhost:90023')
     options.set_capability('detach', True)
     options.add_argument('--ignore-certificate-errors')
     options.add_argument('--ignore-ssl-errors')
     return options
 
-driver=Chrome(
-    options=get_options(),
-)
+driver=Chrome(options=get_options())
 driver.maximize_window()
-# driver.fullscreen_window()
-truecaller_url="https://www.truecaller.com/search/in/7297027240"
-
-def write_to_file(filename, content):
-    file=codecs.open(filename, 'w', encoding='utf-8')
-    file.write(content)
-    file.close()
 
 def save_my_data(xxx, phone, name):
     file=codecs.open('data.csv', 'a+', encoding='utf-8')
     line = xxx + "," + phone + "," + name + "\n"
     file.write(line)
     file.close()
-
-def dump_driver(filename, driver):
-    fp=open(filename, 'wb')
-    pickle.dump(driver, fp)
-    fp.close()
 
 def launchBrowser():
     driver.find_element(By.LINK_TEXT,"Sign in").click()
@@ -63,16 +48,13 @@ time.sleep(2)
 val = int(input())
 if val == 1:
     launchBrowser()
-
 val = int(input())
-l=["https://www.truecaller.com/search/in/7297027240", "https://www.truecaller.com/search/in/9680209864"]
 
 c=100
 end=199
 
 if val > 0:
     while c < end:
-        # driver.get(l[c])
         xxx = "{0:0=3d}".format(c)
         phone_str="852"+xxx+"1881"
         truecaller_url = "https://www.truecaller.com/search/in/"+phone_str
@@ -84,6 +66,6 @@ if val > 0:
         c += 1
         time.sleep(3)
 else:
-    print("\nArray out of bound")
+    print("\nUser Aborted the process")
 
-# driver.quit()
+driver.quit()
